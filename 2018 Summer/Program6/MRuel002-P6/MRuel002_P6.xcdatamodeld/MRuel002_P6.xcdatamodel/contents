@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Event" representedClassName="Event">
+        <attribute name="timeIn" optional="YES" attributeType="Date">
+            <userInfo/>
+        </attribute>
+        <attribute name="timeOut" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Users" inverseName="timeStamps" inverseEntity="Users" syncable="YES"/>
+        <relationship name="timelog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimeLog" inverseName="events" inverseEntity="TimeLog" syncable="YES"/>
+        <userInfo/>
+    </entity>
+    <entity name="TimeLog" representedClassName="TimeLog" syncable="YES" codeGenerationType="class">
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="timelog" inverseEntity="Event" syncable="YES"/>
+    </entity>
+    <entity name="Users" representedClassName="Users" syncable="YES" codeGenerationType="class">
+        <attribute name="fname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isAdmin" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lname" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="timeStamps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="person" inverseEntity="Event" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Event" positionX="520" positionY="203" width="128" height="105"/>
+        <element name="TimeLog" positionX="504" positionY="500" width="128" height="58"/>
+        <element name="Users" positionX="225" positionY="270" width="128" height="133"/>
+    </elements>
+</model>
